@@ -8,4 +8,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 
 Route::get('sobre', SobreController::class);
-Route::get('rastreamento', RastreamentoController::class);
+Route::get('rastreamento', RastreamentoController::class)->name('frete.rastreamento');

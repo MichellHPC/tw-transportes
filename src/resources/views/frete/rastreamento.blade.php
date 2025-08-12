@@ -5,16 +5,16 @@
                 Rastreamento Encomenda
             </h1>
             <p class="mt-4 text-lg">
-                Código de Rastreamento: <span class="font-semibold">TESTE123</span>
+                Código de Rastreamento: <span class="font-semibold"> {{ $search->codigo_rastreamento }}</span>
             </p>
             <p class="mt-2">
                 Status: 
                 <span class="px-3 py-1 rounded-full">
-                    Entregue
+                    {{ $search->status === 'entregue' ? 'Entregue' : 'Em Trânsito' }}
                 </span>
             </p>
             <p class="mt-2">
-                Destino: <span class="font-semibold">Av. Paulista, 1000 - Centro (São Paulo)</span>
+                Destino: <span class="font-semibold"> {{ $search->destino }}</span>
             </p>
         </div>
 
@@ -30,14 +30,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-50 transition-colors border-b">
-                    <td class="px-6 py-4">
-                        Transferido da unidade A para unidade B
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        01/05/2026
-                    </td>
-                </tr>
+                @foreach($search->etapas as $etapa)
+                    <tr class="hover:bg-gray-50 transition-colors border-b">
+                        <td class="px-6 py-4">
+                            {{ $etapa->descricao }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            {{ $etapa->created_at->format('d/m/Y H:i') }}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
