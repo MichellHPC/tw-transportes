@@ -9,8 +9,8 @@
             </p>
             <p class="mt-2">
                 Status: 
-                <span class="px-3 py-1 rounded-full">
-                    {{ $search->status === 'entregue' ? 'Entregue' : 'Em Trânsito' }}
+                <span class="px-3 py-1 rounded-full {{ $search->status->getTagColor() }}">
+                    {{ $search->status->value }}
                 </span>
             </p>
             <p class="mt-2">
@@ -30,16 +30,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($search->etapas as $etapa)
-                    <tr class="hover:bg-gray-50 transition-colors border-b">
-                        <td class="px-6 py-4">
-                            {{ $etapa->descricao }}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            {{ $etapa->created_at->format('d/m/Y H:i') }}
+                @if($search->etapas->isEmpty())
+                    <tr>
+                        <td colspan="2" class="px-6 py-4 text-center text-gray-500">
+                            Nenhuma etapa registrada para este código de rastreamento.
                         </td>
                     </tr>
-                @endforeach
+                @else
+                    @foreach($search->etapas as $etapa)
+                        <tr class="hover:bg-gray-50 transition-colors border-b">
+                            <td class="px-6 py-4">
+                                {{ $etapa->descricao }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $etapa->created_at->format('d/m/Y H:i') }}
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>
