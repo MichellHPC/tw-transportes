@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Cliente extends Model
-{
+{   
+    public $timestamps = true;
+    protected $fillable = ['nome', 'telefone'];
+
     public function enviados(): HasMany
     {
         return $this->hasMany(Frete::class, 'remetente_id');
