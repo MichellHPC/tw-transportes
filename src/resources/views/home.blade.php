@@ -20,7 +20,13 @@
                     </h2>
                     <form action="{{ route('frete.historico') }}" method="GET">
                         <div class="relative w-full max-w-md">
-                            <input type="tel" name="telefone" placeholder="Número de telefone" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" oninput="aplicarMascaraTelefone(this)" maxlength="15">
+                            <input 
+                                type="tel" 
+                                name="telefone" 
+                                placeholder="Número de telefone" 
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" 
+                                oninput="aplicarMascaraTelefone(this)"
+                                maxlength="16">
                             <button type="submit" class="absolute inset-y-0 right-0 px-4 py-2 text-white bg-indigo-500 rounded-r-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Consultar</button>
                         </div>
                     </form>
@@ -32,4 +38,26 @@
             <img src="{{ asset('entrega.webp') }}" alt="Placeholder" class="object-cover w-full h-full">
         </div>
     </div>
+
+    <script>
+        const aplicarMascaraTelefone = function(campo) {
+            let valor = campo.value.replace(/\D/g, ""); // remove tudo que não é número
+            
+            // Limita a 11 dígitos (formato brasileiro com nono dígito)
+            valor = valor.substring(0, 11);
+
+            // Monta a máscara passo a passo
+            if (valor.length > 7) {
+                campo.value = `(${valor.substring(0, 2)}) ${valor.substring(2, 3)} ${valor.substring(3, 7)}-${valor.substring(7, 11)}`;
+            } 
+            else if (valor.length > 2 && valor.length <= 7) {
+                campo.value = `(${valor.substring(0, 2)}) ${valor.substring(2)}`;
+            } 
+            else if (valor.length <= 2) {
+                campo.value = `(${valor}`;
+            }
+        };
+    </script>
+
+
 </x-layout>

@@ -11,6 +11,8 @@ class HistoricoController extends Controller
     {   
         $params = $request->all();
 
+        $params['telefone'] = preg_replace('/\D/', '', $params['telefone']);
+
         if( !isset($params['telefone']) or empty($params['telefone'])){
             return redirect()->back()->with(['error' => 'Telefone não encontrado.']);
         }
