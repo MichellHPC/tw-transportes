@@ -6,14 +6,17 @@ use App\Enums\FreteStatus;
 use App\Http\Requests\StorFreteRequest;
 use App\Models\Frete;
 use Illuminate\Http\Request;
+use App\Helpers;
 
 class FreteController extends Controller
 {
     public function store(StorFreteRequest $request)
     {
         try {
-            
+
             $params = $request->all();
+
+            $params['codigo_rastreamento'] = Helpers::generateTrackingCode();
             $params['status'] = FreteStatus::PENDENTE;
 
             $creating = Frete::create($params);
