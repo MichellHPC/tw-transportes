@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Frete extends Model
 {   
+    public $timestamps = true;
+    protected $fillable = [ 
+        'origem',
+        'destino',
+        'codigo_rastreamento',
+        'status',
+        'remetente_id',
+        'destinatario_id'
+    ];
+
     protected $casts = [
         'status' => FreteStatus::class
     ];
