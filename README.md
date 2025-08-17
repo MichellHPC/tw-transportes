@@ -49,24 +49,25 @@ tw-transportes/
 │   └── php/
 ├── .vscode/               # Configurações do VSCode
 │   └── launch.json
-├── app/                   # Aplicação principal Laravel
-│   ├── Console/
-│   ├── Exceptions/
-│   ├── Http/
-│   └── Models/
-├── bootstrap/             # Arquivo de bootstrap da aplicação
-├── config/                # Arquivos de configuração
-├── database/              # Migrations e seeders
-├── public/                # Pasta pública do Laravel
-├── resources/             # Views Blade e assets
-├── routes/                # Arquivos de rotas
-│   └── web.php
-├── storage/               # Arquivos gerados, logs, cache
-├── tests/                 # Testes automatizados
+├──.src/
+    ├── app/                   # Aplicação principal Laravel
+    │   ├── Console/
+    │   ├── Exceptions/
+    │   ├── Http/
+    │   └── Models/
+    ├── bootstrap/             # Arquivo de bootstrap da aplicação
+    ├── config/                # Arquivos de configuração
+    ├── database/              # Migrations e seeders
+    ├── public/                # Pasta pública do Laravel
+    ├── resources/             # Views Blade e assets
+    ├── routes/                # Arquivos de rotas
+    │   └── web.php
+    ├── storage/               # Arquivos gerados, logs, cache
+    ├── tests/                 # Testes automatizados
+    ├── .env.example           # Exemplo de variáveis de ambiente
+    ├── composer.json          # Dependências PHP
 ├── docker-compose.yml     # Arquivo de orquestração Docker
-├── .env.example           # Exemplo de variáveis de ambiente
-├── README.md              # Documentação do projeto
-└── composer.json          # Dependências PHP
+└── README.md              # Documentação do projeto
 ```
 
 
