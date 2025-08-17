@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Enums\FreteStatus;
 
 class StoreEtapaRequest extends FormRequest
 {
@@ -23,7 +25,13 @@ class StoreEtapaRequest extends FormRequest
     {
         return [
             'descricao' => ['required', 'string', 'max:255'],
-            'frete_id'  => ['required', 'exists:fretes,id']
+            'frete_id'  => ['required', 'exists:fretes,id'],
+            'tipo_etapa' => ['required', Rule::in([
+                FreteStatus::PENDENTE->name, 
+                FreteStatus::EM_TRANSITO->name, 
+                FreteStatus::SAIU_PARA_ENTREGA->name, 
+                FreteStatus::ENTREGUE->name
+            ])]
         ];
     }
 }
