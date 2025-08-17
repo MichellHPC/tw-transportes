@@ -1,16 +1,24 @@
 FROM php:8.3-fpm
 
-# Instala extensões e dependências
+# Instala dependências do sistema
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libzip-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip
+    git \
+    curl \
+    zip \
+    unzip \
+    libzip-dev \
+    libonig-dev \
+    libxml2-dev \
+    libicu-dev \
+    && docker-php-ext-install pdo pdo_mysql zip intl \
+    && docker-php-ext-enable intl
 
-# Instala Xdebug
+# Xdebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-# Configurações do Xdebug
+# Config do Xdebug
 COPY .docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-# Instala Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
