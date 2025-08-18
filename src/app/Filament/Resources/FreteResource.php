@@ -28,18 +28,22 @@ class FreteResource extends Resource
                 Forms\Components\TextInput::make('destino')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('codigo_rastreamento')
-                    ->required()
-                    ->maxLength(255),
+                    ->label("Código de Rastreamento")
+                    ->readOnly()
+                    ->default("Codigo gerado automaticamente")
+                    ->required(),
                 Forms\Components\TextInput::make('status')
+                    ->readOnly()
                     ->required()
-                    ->maxLength(255)
-                    ->default('pendente'),
-                Forms\Components\TextInput::make('remetente_id')
+                    ->default('Pendente'),
+                Forms\Components\Select::make('remetente_id')
+                    ->label('Remetente')
                     ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('destinatario_id')
+                    ->relationship('remetente', 'nome'),
+                Forms\Components\Select::make('destinatario_id')
+                    ->label('Destinatário')
                     ->required()
-                    ->numeric(),
+                    ->relationship('destinatario', 'nome'),
             ]);
     }
 
@@ -55,17 +59,19 @@ class FreteResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('remetente_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('remetente.nome')
+                    ->label('Remetente')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('destinatario_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('destinatario.nome')
+                    ->label('Destinatário')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Data de Criação')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Data de Atualização')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
