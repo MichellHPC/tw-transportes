@@ -32,4 +32,11 @@ enum FreteStatus: string
 
         return null;
     }
+
+    public static function toNameValueArray()
+    {
+        return collect(FreteStatus::cases())
+            ->mapWithKeys(fn($case) => [$case->name => $case->value])
+            ->toArray();
+    }
 }
