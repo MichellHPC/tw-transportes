@@ -3,6 +3,22 @@
 Sistema web para gerenciamento de transportes e agendamentos, com estrutura moderna baseada em Docker, PHP e Laravel.
 
 ---
+# 🚌 TW Transportes  
+
+Sistema web para gerenciamento de transportes e agendamentos, desenvolvido com foco em estudo de tecnologias modernas e boas práticas de arquitetura.  
+
+A aplicação combina **API REST** e um **painel administrativo** utilizando **Filament PHP**, oferecendo uma solução simples, mas completa, para organizar agendamentos e recursos de transporte.  
+
+## 🚀 Tecnologias utilizadas  
+- **Backend:** PHP (Laravel), Filament PHP  
+- **Frontend:** HTML, CSS, Tailwind CSS 3  
+- **Banco de Dados:** MySQL  
+- **DevOps:** Docker, Nginx  
+
+## 🎯 Objetivo do projeto  
+O projeto tem como finalidade explorar a integração entre **Laravel + Filament** para construção de backends administrativos ágeis, além de aprimorar o uso do **Tailwind CSS** na camada de apresentação.  
+
+Trata-se de uma aplicação prática voltada para estudos em **desenvolvimento fullstack** e **containerização com Docker**.  
 
 ## 📦 Instalação
 
