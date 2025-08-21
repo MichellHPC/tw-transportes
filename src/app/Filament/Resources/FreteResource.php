@@ -82,7 +82,7 @@ class FreteResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                #Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -104,7 +104,7 @@ class FreteResource extends Resource
             'index' => Pages\ListFretes::route('/'),
             'create' => Pages\CreateFrete::route('/create'),
             'view' => Pages\ViewFrete::route('/{record}'),
-            'edit' => Pages\EditFrete::route('/{record}/edit'),
+            #'edit' => Pages\EditFrete::route('/{record}/edit'),
         ];
     }
 }
