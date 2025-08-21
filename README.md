@@ -1,8 +1,3 @@
-# 🚌 TW Transportes
-
-Sistema web para gerenciamento de transportes e agendamentos, com estrutura moderna baseada em Docker, PHP e Laravel.
-
----
 # 🚌 TW Transportes  
 
 Sistema web para gerenciamento de transportes e agendamentos, desenvolvido com foco em estudo de tecnologias modernas e boas práticas de arquitetura.  
